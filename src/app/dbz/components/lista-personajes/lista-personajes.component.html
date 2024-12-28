@@ -1,0 +1,29 @@
+<h4 *ngIf="title">{{ title }}</h4>
+<ul class="list-group">
+  <div></div>
+  <li
+    *ngFor="
+      let personaje of personajes();
+      let i = index;
+      let isFirst = first;
+      let isLast = last;
+      let isEven = even;
+      let isOdd = odd
+    "
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-primary': isFirst,
+      'list-group-item-success': isEven,
+      'list-group-item-danger': isOdd
+    }"
+  >
+    <div class="flex-grow-1 d-flex mx-2">
+      <span class="text-primary">{{ i + 1 }}.-&nbsp;</span>
+      <span class="flex-grow-1">{{ personaje.nombre }}</span>
+      <strong>Poder:</strong>&nbsp;{{ personaje.poder }}
+    </div>
+    <button (click)="eliminarPersonaje(personaje.id)" class="btn btn-danger">
+      X
+    </button>
+  </li>
+</ul>
